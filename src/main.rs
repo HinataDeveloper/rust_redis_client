@@ -27,16 +27,8 @@
 // Kernel Version: 7.2.15-200.fc44.x86_64
 // Firmware Version: 71CN51WW(V1.21)
 
-use redis_client::redis_test_connection;
-
 fn main() {
     println!("\n");
-
-    let result = redis_test_connection();
-    match result {
-        Ok(true_msg) => println!("{true_msg}"),
-        Err(false_msg) => println!("{false_msg}"),
-    }
 
     println!("\nThe End ...\n");
 }
