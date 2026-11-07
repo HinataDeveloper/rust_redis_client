@@ -24,3 +24,28 @@
 
 // Kernel Version: 7.2.15-200.fc44.x86_64
 // Firmware Version: 71CN51WW(V1.21)
+
+use redis::ConnectionLike;
+
+/// # Errors
+pub fn redis_test_connection() -> Result<String, String> {
+    let client_result = redis::Client::open("redis://127.0.0.1/");
+    let client = match client_result {
+        Ok(cl) => cl,
+        Err(err) => return Err(err.to_string()),
+    };
+
+    let connection_result = client.get_connection();
+    let connection = match connection_result {
+        Ok(cn) => cn,
+        Err(err) => return Err(err.to_string()),
+    };
+
+    if connection.is_open() {
+        Ok(String::from("Redis Connection is Open ..."))
+    } else {
+        Err(String::from(
+            "I am sorry to say Redis connection is closed ...",
+        ))
+    }
+}
