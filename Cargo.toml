@@ -1,0 +1,19 @@
+[package]
+name = "redis_client"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.101"
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+nursery = { level = "warn", priority = -1 }
+module_name_repetitions = "allow"
+
+[dependencies.redis]
+version = "*"
+
+[dependencies]
+
+[[bin]]
+name = "redis-client"
+path = "src/main.rs"
