@@ -24,3 +24,13 @@
 
 // Kernel Version: 7.2.15-200.fc44.x86_64
 // Firmware Version: 71CN51WW(V1.21)
+
+mod bus_logic;
+mod driver;
+mod entity;
+
+pub use driver::get_person;
+pub use driver::insert_or_update_person;
+pub use driver::is_connection_open;
+pub use driver::remove_person;
+pub use entity::Person;
