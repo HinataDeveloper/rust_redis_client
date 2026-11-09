@@ -1,4 +1,4 @@
-mod redis_driver;
+pub mod redis_driver;
 pub use redis_driver::get_person;
 pub use redis_driver::insert_or_update_person;
 pub use redis_driver::is_connection_open;

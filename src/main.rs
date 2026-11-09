@@ -1,5 +1,5 @@
 // main.rs
-// Date: Sun Nov 08 2026
+// Date: Mon Nov 09 2026
 // Educational and Practice Rust Programming Language Code
 
 // Project: Learning Redis
@@ -27,8 +27,51 @@
 // Kernel Version: 7.2.15-200.fc44.x86_64
 // Firmware Version: 71CN51WW(V1.21)
 
+use redis_client::Person;
+use redis_client::choose;
+use redis_client::remove;
+use redis_client::save_or_update;
+use redis_client::test_connection;
+
 fn main() {
     println!("\n");
+
+    if test_connection() {
+        println!("Connection is open ....");
+    } else {
+        println!("I am sorry to say connection is closed ...");
+    }
+
+    //--------------------------------------
+
+    let raphael = Person::default();
+    println!("raphael is: {raphael}");
+
+    let save_result = save_or_update("raphael:1", &raphael);
+    if save_result {
+        println!("Rahael save into Redis Successfully ...");
+    } else {
+        println!("Saver Operation was failed ...");
+    }
+
+    //--------------------------------------
+
+    let person_option = choose("raphael:1");
+    let raphael = match person_option {
+        Some(raph) => raph,
+        None => Person::new(0, "", "", 0),
+    };
+
+    println!("retured person from redis is: {raphael}");
+
+    //--------------------------------------
+
+    let result_remove = remove("raphael:1");
+    if result_remove {
+        println!("person was removed from Redis successfully ...");
+    } else {
+        println!("remove operation was failed ...");
+    }
 
     println!("\nThe End ...\n");
 }

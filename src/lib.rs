@@ -1,5 +1,5 @@
 // lib.rs
-// Date: Sun Nov 08 2026
+// Date: Mon Nov 09 2026
 // Educational and Practice Rust Programming Language Code
 
 // Dependency: Redis
@@ -11,7 +11,7 @@
 // host: x86_64-unknown-linux-gnu
 // release: 1.101.0-nightly
 // LLVM version: 23.1.5
-
+ 
 // cargo 1.101.0-nightly (3c747ea3e 2026-11-03)
 // release: 1.101.0-nightly
 // commit-hash: 3c747ea3ead23951c1b43a5edfcbdb449135ddeb
@@ -29,8 +29,12 @@ mod bus_logic;
 mod driver;
 mod entity;
 
-pub use driver::get_person;
-pub use driver::insert_or_update_person;
-pub use driver::is_connection_open;
-pub use driver::remove_person;
+pub use bus_logic::choose;
+pub use bus_logic::remove;
+pub use bus_logic::save_or_update;
+pub use bus_logic::test_connection;
+pub(crate) use driver::get_person;
+pub(crate) use driver::insert_or_update_person;
+pub(crate) use driver::is_connection_open;
+pub(crate) use driver::remove_person;
 pub use entity::Person;
