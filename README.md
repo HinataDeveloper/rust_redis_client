@@ -1,2 +1,3 @@
-# Redis Client on Rust Programming Language.
-Learning how to connect to Redis and interact with it.
+# Redis Client in Rust Programming Language.
+
+## You can see all my practice in snapshots folder
